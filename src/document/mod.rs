@@ -2,7 +2,7 @@
 //!
 //! A document is a OPC package with specific components.
 mod presentation;
-mod spreadsheet;
+pub mod spreadsheet;
 mod wordprocessing;
 
 pub use spreadsheet::*;

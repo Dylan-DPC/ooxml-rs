@@ -11,7 +11,7 @@ use crate::{
     packaging::package::{OpenXmlPackage, Relationships},
 };
 
-mod cell;
+pub mod cell;
 mod chart;
 mod document_type;
 mod drawing;
@@ -250,7 +250,6 @@ impl Worksheet {
             }
             s => {
                 // FIXME(@zitsen): support custom format like dollars, etc.
-                eprintln!("unimplemented format support: {}", s);
                 CellValue::String(raw.to_string())
             }
         };
@@ -390,6 +389,11 @@ impl<'a> Cell<'a> {
             .and_then(|rows| rows.get(self.row))
             .and_then(|row| row.cols.as_ref().and_then(|cols| cols.get(self.col)))
     }
+
+    pub fn index(&self) -> (usize, usize) {
+        (self.row, self.col)
+    }
+
     pub fn cell_type(&self) {
         unimplemented!()
     }

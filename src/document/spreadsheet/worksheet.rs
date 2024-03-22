@@ -176,8 +176,7 @@ impl SheetCol {
                         .expect("sharedString id not valid"),
                 ),
                 t if t == "n" => CellType::StyledNumber(*s),
-                t if t == "inlineStr" => CellType::Raw,
-                t => unimplemented!("cell type not supported: {}", t),
+                t => CellType::Raw,
             },
         }
         // if let Some(t) = self.t.as_ref() {
